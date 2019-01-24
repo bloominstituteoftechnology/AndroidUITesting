@@ -1,2 +1,2 @@
 # Android UI Testing Calculator
-My Pull Request found here: https://github.com/LambdaSchool/AndroidUITesting/pull/3
+My code found here: https://github.com/jbseppanen/Android_UnitTest_Calculator/tree/withUI
