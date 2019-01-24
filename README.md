@@ -32,3 +32,7 @@ Be sure to add test cases for each use case on each feature before implementing 
 #### Go Further
 
 - Use what we've learned about styles and themes to make the app look how you want it to.
+
+#### Patrick's AndroidUITesting Submission
+
+- Link: https://github.com/vespertineSiren/Android_UnitTest_Calculator/tree/unit_testing_2
