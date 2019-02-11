@@ -10,14 +10,16 @@
 
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/number1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="Number 1"
         android:inputType="number" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/number2"
+        android:hint="number 2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -27,29 +29,30 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:textSize="25sp"
+        android:text="Result" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/add"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="Add" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/sub"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="Subtract" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/mutli"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="Multiply" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/div"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="Divide" />
 </android.support.v7.widget.LinearLayoutCompat>
