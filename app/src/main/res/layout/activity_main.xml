@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:background="@color/colorOrange"
     tools:context=".MainActivity">
 
 
@@ -15,6 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="68dp"
         android:layout_marginTop="60dp"
+        android:background="@color/colorGray"
         android:ems="10"
         android:hint="0"
         android:inputType="number"
@@ -27,6 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:layout_marginEnd="68dp"
+        android:background="@color/colorGray"
         android:ems="10"
         android:hint="0"
         android:inputType="number"
@@ -41,6 +44,7 @@
         android:layout_marginTop="9dp"
         android:layout_marginEnd="68dp"
         android:text="Result"
+        android:background="@color/colorGray"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +56,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="68dp"
         android:layout_marginBottom="13dp"
-        android:background="@color/colorWhite"
+        android:background="@color/colorOrange"
         android:src="@drawable/plus_circle"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/div"
@@ -65,7 +69,7 @@
         android:layout_marginEnd="68dp"
         android:layout_marginBottom="13dp"
         android:src="@drawable/minus_circle"
-        android:background="@color/colorWhite"
+        android:background="@color/colorOrange"
         app:layout_constraintBottom_toTopOf="@+id/mutli"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -75,7 +79,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="68dp"
         android:layout_marginBottom="292dp"
-        android:background="@color/colorWhite"
+        android:background="@color/colorOrange"
         android:src="@drawable/close_circle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -86,7 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="72dp"
         android:layout_marginBottom="292dp"
-        android:background="@color/colorWhite"
+        android:background="@color/colorOrange"
         android:src="@drawable/division_box"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -5,12 +5,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     TextView result;
     EditText number1, number2;
-    Button add, subtract, divide, multiply;
+    ImageButton add, subtract, divide, multiply;
 
     float result_num;
     int num1, num2;
@@ -23,10 +24,10 @@ public class MainActivity extends AppCompatActivity {
         result = (TextView) findViewById(R.id.textView);
         number1 = (EditText) findViewById(R.id.number1);
         number2 = (EditText) findViewById(R.id.number2);
-        add = (Button) findViewById(R.id.add);
-        subtract= (Button) findViewById(R.id.sub);
-        multiply = (Button) findViewById(R.id.mutli);
-        divide = (Button) findViewById(R.id.div);
+        add = (ImageButton) findViewById(R.id.add);
+        subtract= (ImageButton) findViewById(R.id.sub);
+        multiply = (ImageButton) findViewById(R.id.mutli);
+        divide = (ImageButton) findViewById(R.id.div);
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
