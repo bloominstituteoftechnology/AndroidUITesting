@@ -174,12 +174,12 @@ public class Calculator {
 	}
 	
 	public void powerOf(double numOne, double numTwo, double runningTotal) {
-		if (runningTotal == 0 && numTwo > 0) {
+		if (runningTotal == 0 && numTwo > 1) {
 			runningTotal = numOne * numOne;
 			numTwo--;
 		}
 		
-		if (numTwo > 0) {
+		if (numTwo > 1) {
 			runningTotal *= numOne;
 			powerOf(numOne, numTwo - 1, runningTotal * numOne);
 		} else {

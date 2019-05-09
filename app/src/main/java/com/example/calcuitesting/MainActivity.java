@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 		});
 		
 		final Button button1 = findViewById(R.id.btn_1);
-		button0.setOnClickListener(new View.OnClickListener() {
+		button1.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				sendInput(button1.getText().toString());

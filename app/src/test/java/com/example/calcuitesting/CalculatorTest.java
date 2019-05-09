@@ -310,18 +310,19 @@ public class CalculatorTest {
 	public void addSymbolPowerOfFunction_AllValuesSetHasPressedEquals_ResultEqualsNumOnePowerOfNumTwo() {
 		calculator.numOne = "2";
 		calculator.operand = OPERAND_POWER;
-		calculator.addSymbol("4");
+		calculator.addSymbol("2");
 		calculator.addSymbol(OPERAND_EQUALS);
-		assertThat(calculator.result, equalTo("256.0"));
+		calculator.addSymbol(OPERAND_EQUALS);
+		assertThat(calculator.result, equalTo("16.0"));
 	}
 	
 	@Test
 	public void addSymbolPowerOfFunction_AllValuesSet_ResultEqualsNumOnePowerOfNumTwo() {
 		calculator.numOne = "2";
 		calculator.operand = OPERAND_POWER;
-		calculator.addSymbol("4");
+		calculator.addSymbol("2");
 		calculator.addSymbol(OPERAND_EQUALS);
-		assertThat(calculator.result, equalTo("256.0"));
+		assertThat(calculator.result, equalTo("4.0"));
 	}
 	
 }
