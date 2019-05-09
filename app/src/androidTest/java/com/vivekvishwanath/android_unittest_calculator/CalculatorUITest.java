@@ -121,6 +121,42 @@ public class CalculatorUITest {
     }
 
     @Test
+    public void calculatorUITest_shouldAddPlusToDisplay() {
+        String number = ((Button)mainActivityActivityTestRule
+                .getActivity().findViewById(R.id.add_button)).getText().toString();
+        onView((withId(R.id.display_screen))).perform(clearText());
+        onView(withId(R.id.add_button)).perform((click()));
+        onView(withId(R.id.display_screen)).check(matches(withText(number)));
+    }
+
+    @Test
+    public void calculatorUITest_shouldAddMinusToDisplay() {
+        String number = ((Button)mainActivityActivityTestRule
+                .getActivity().findViewById(R.id.subtract_button)).getText().toString();
+        onView((withId(R.id.display_screen))).perform(clearText());
+        onView(withId(R.id.subtract_button)).perform((click()));
+        onView(withId(R.id.display_screen)).check(matches(withText(number)));
+    }
+
+    @Test
+    public void calculatorUITest_shouldAddTimesToDisplay() {
+        String number = ((Button)mainActivityActivityTestRule
+                .getActivity().findViewById(R.id.multiply_button)).getText().toString();
+        onView((withId(R.id.display_screen))).perform(clearText());
+        onView(withId(R.id.multiply_button)).perform((click()));
+        onView(withId(R.id.display_screen)).check(matches(withText(number)));
+    }
+
+    @Test
+    public void calculatorUITest_shouldAddDivideToDisplay() {
+        String number = ((Button)mainActivityActivityTestRule
+                .getActivity().findViewById(R.id.divide_button)).getText().toString();
+        onView((withId(R.id.display_screen))).perform(clearText());
+        onView(withId(R.id.divide_button)).perform((click()));
+        onView(withId(R.id.display_screen)).check(matches(withText(number)));
+    }
+
+    @Test
     public void calculatorUITest_shouldAddMultipleNumbersToDisplay() {
         String number = ((Button)mainActivityActivityTestRule
                 .getActivity().findViewById(R.id.three_button)).getText().toString()
@@ -137,6 +173,19 @@ public class CalculatorUITest {
 
     @Test
     public void calculatorUITest_addTwoNumbers() {
-        
+        double firstNum = Double.parseDouble(((Button)mainActivityActivityTestRule
+                .getActivity().findViewById(R.id.three_button)).getText().toString());
+        double secondNum = Double.parseDouble(((Button)mainActivityActivityTestRule
+                .getActivity().findViewById(R.id.six_button)).getText().toString());
+        double sum = firstNum + secondNum;
+        onView((withId(R.id.display_screen))).perform(clearText());
+        onView(withId(R.id.three_button)).perform((click()));
+        onView(withId(R.id.add_button)).perform((click()));
+        onView(withId(R.id.six_button)).perform((click()));
+        onView(withId(R.id.equals_button)).perform((click()));
+        onView(withId(R.id.display_screen)).check(matches(withText(Double.toString(sum))));
+
+
     }
+
 }
