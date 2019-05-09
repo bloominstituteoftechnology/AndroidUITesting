@@ -80,10 +80,10 @@
         app:layout_constraintTop_toBottomOf="@id/button_multiply" />
 
     <Button
-        android:id="@+id/button_sqrt"
+        android:id="@+id/button_dot"
         android:layout_width="100dp"
         android:layout_height="75dp"
-        android:text="Sqr Rt"
+        android:text="."
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@id/button_3"
         app:layout_constraintTop_toBottomOf="@id/button_multiply" />
@@ -158,6 +158,33 @@
         android:text="="
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@id/button_9"
-        app:layout_constraintTop_toBottomOf="@id/button_sqrt" />
+        app:layout_constraintTop_toBottomOf="@id/button_dot" />
+
+    <Button
+        android:id="@+id/button_square"
+        android:layout_width="100dp"
+        android:layout_height="75dp"
+        android:text="^2"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_8" />
+
+    <Button
+        android:id="@+id/button_sqrt"
+        android:layout_width="100dp"
+        android:layout_height="75dp"
+        android:text="Sqr Rt"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@id/button_0"
+        app:layout_constraintTop_toBottomOf="@id/button_8" />
+
+    <Button
+        android:id="@+id/button_clear"
+        android:layout_width="100dp"
+        android:layout_height="75dp"
+        android:text="Clear"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@id/button_sqrt"
+        app:layout_constraintTop_toBottomOf="@id/button_8" />
 
 </android.support.constraint.ConstraintLayout>
