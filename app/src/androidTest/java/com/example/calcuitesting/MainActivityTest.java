@@ -150,7 +150,7 @@ public class MainActivityTest {
 	public void mainActivity_InputMatchesBtnDivide_ResultTrue() {
 		onView(withId(R.id.btn_6)).perform(click());
 		onView(withId(R.id.btn_divide)).perform(click());
-		onView(withId(R.id.tv_input)).check(matches(withText("6   /   ")));
+		onView(withId(R.id.tv_input)).check(matches(withText("6   /    ")));
 	}
 	
 	
