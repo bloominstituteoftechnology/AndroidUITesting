@@ -1,6 +1,6 @@
 package com.vivekvishwanath.android_unittest_calculator;
 
-import org.junit.Test;
+/* import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class CalculatorTest {
@@ -34,7 +34,7 @@ public class CalculatorTest {
         assertEquals(combinedCharacters, calculator.addSymbol(newCharacter));
     }
 
-    /* @Test
+     @Test
     public void calculatorTest_AddDecimal_WithPreviousDecimalAdded() {
         calculator.clear();
         String previousCharacter = "1.1";
@@ -42,7 +42,7 @@ public class CalculatorTest {
         String combinedCharacters = "11.";
         calculator.addSymbol(previousCharacter);
         assertEquals(combinedCharacters, calculator.addSymbol(newCharacter));
-    } */
+    }
 
     @Test
     public void calculatorTest_AddTwoNumbers_WithoutPreviousOperations() {
@@ -118,3 +118,4 @@ public class CalculatorTest {
         assertEquals(repeatedQuotient, calculator.performRepeatedCalculation());
     }
 }
+*/

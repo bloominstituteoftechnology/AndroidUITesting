@@ -1,7 +1,10 @@
 package com.vivekvishwanath.android_unittest_calculator;
 
-public class Calculator {
+import java.io.Serializable;
 
+public class Calculator implements Serializable {
+
+    static final String CALCULATOR_TAG = "calculator";
     private String enteredSymbols;
     private String previousSymbols;
 
