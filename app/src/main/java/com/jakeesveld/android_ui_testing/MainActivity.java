@@ -97,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
     View.OnClickListener setOperandOnClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            resetOperand();
             switch (v.getId()){
                 case R.id.button_add:
                     calculator.setOperand(Calculator.ADD);
