@@ -32,6 +32,19 @@ public class Calculator implements Serializable {
         }
     }
 
+    public String performOperation() {
+        if (enteredSymbols.contains("+")) {
+            return add();
+        } else if (enteredSymbols.contains("-")) {
+            return subtract();
+        } else if (enteredSymbols.contains("x")) {
+            return multiply();
+        } else if(enteredSymbols.contains("/")) {
+            return divide();
+        }
+        return enteredSymbols;
+    }
+
     public String add() {
         if (enteredSymbols.contains("+")) {
             previousSymbols = enteredSymbols;
@@ -61,7 +74,7 @@ public class Calculator implements Serializable {
     }
 
     public String multiply() {
-        if (enteredSymbols.contains("*")) {
+        if (enteredSymbols.contains("x")) {
             previousSymbols = enteredSymbols;
             String[] numbers = enteredSymbols.split("\\*");
             double before = Double.parseDouble(numbers[0]);

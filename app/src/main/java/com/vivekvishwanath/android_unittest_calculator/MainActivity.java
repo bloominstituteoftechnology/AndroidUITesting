@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.nine_button).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.zero_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 displayScreen.setText(calculator.addSymbol(((Button)v).getText().toString()));
@@ -89,5 +89,41 @@ public class MainActivity extends AppCompatActivity {
                 displayScreen.setText(calculator.addSymbol(((Button)v).getText().toString()));
             }
         });
+
+        findViewById(R.id.add_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayScreen.setText(calculator.addSymbol(((Button)v).getText().toString()));
+            }
+        });
+
+        findViewById(R.id.subtract_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayScreen.setText(calculator.addSymbol(((Button)v).getText().toString()));
+            }
+        });
+
+        findViewById(R.id.multiply_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayScreen.setText(calculator.addSymbol(((Button)v).getText().toString()));
+            }
+        });
+
+        findViewById(R.id.divide_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayScreen.setText(calculator.addSymbol(((Button)v).getText().toString()));
+            }
+        });
+
+        findViewById(R.id.equals_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayScreen.setText(calculator.performOperation());
+            }
+        });
+
     }
 }

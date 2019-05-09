@@ -103,11 +103,20 @@ public class CalculatorUITest {
     }
 
     @Test
-    public void calculatorUITest_shouldAdd4DecimalToDisplay() {
+    public void calculatorUITest_shouldAddDecimalToDisplay() {
         String number = ((Button)mainActivityActivityTestRule
                 .getActivity().findViewById(R.id.decimal_button)).getText().toString();
         onView((withId(R.id.display_screen))).perform(clearText());
         onView(withId(R.id.decimal_button)).perform((click()));
+        onView(withId(R.id.display_screen)).check(matches(withText(number)));
+    }
+
+    @Test
+    public void calculatorUITest_shouldAdd0ToDisplay() {
+        String number = ((Button)mainActivityActivityTestRule
+                .getActivity().findViewById(R.id.zero_button)).getText().toString();
+        onView((withId(R.id.display_screen))).perform(clearText());
+        onView(withId(R.id.zero_button)).perform((click()));
         onView(withId(R.id.display_screen)).check(matches(withText(number)));
     }
 
@@ -120,8 +129,14 @@ public class CalculatorUITest {
                 + ((Button)mainActivityActivityTestRule
                 .getActivity().findViewById(R.id.decimal_button)).getText().toString();
         onView((withId(R.id.display_screen))).perform(clearText());
-        
+        onView(withId(R.id.three_button)).perform((click()));
+        onView(withId(R.id.nine_button)).perform((click()));
+        onView(withId(R.id.decimal_button)).perform((click()));
+        onView(withId(R.id.display_screen)).check(matches(withText(number)));
     }
 
-
+    @Test
+    public void calculatorUITest_addTwoNumbers() {
+        
+    }
 }
