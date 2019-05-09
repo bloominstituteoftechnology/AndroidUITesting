@@ -1,12 +1,8 @@
 package com.example.calcuitesting;
 
-import android.content.Intent;
-
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-
-import android.content.Intent;
 
 import androidx.test.rule.ActivityTestRule;
 

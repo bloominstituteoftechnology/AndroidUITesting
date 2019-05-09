@@ -47,46 +47,46 @@ public class CalculatorTest {
 	}
 	
 	@Test
-	public void AddSymbol_inputOpperandWithNoNumOne_ReturnEmptyString() {
+	public void AddSymbol_inputOperandWithNoNumOne_ReturnEmptyString() {
 		calculator.addSymbol(OPERAND_TIMES);
 		assertThat(calculator.operand, equalTo(""));
 	}
 	
 	@Test
-	public void AddSymbol_inputOpperandWithNumOneValid_ReturnOpperand() {
+	public void AddSymbol_inputOperandWithNumOneValid_ReturnOperand() {
 		calculator.numOne = NUM_LARGE;
 		calculator.addSymbol(OPERAND_TIMES);
 		assertThat(calculator.operand, equalTo(OPERAND_TIMES));
 	}
 	
 	@Test
-	public void SetFlags_emptyOpperand_ReturnTrue() {
+	public void SetFlags_emptyOperand_ReturnTrue() {
 		calculator.setFlags();
 		assertThat(calculator.isFirstNum, equalTo(true));
 	}
 	
 	@Test
-	public void SetFlags_setOpperand_Returnfalse() {
+	public void SetFlags_setOperand_ReturnFalse() {
 		calculator.operand = OPERAND_TIMES;
 		calculator.setFlags();
 		assertThat(calculator.isFirstNum, equalTo(false));
 	}
 	
 	@Test
-	public void setOpperand_NumOneEmpty_ReturnEmptyString() {
+	public void setOperand_NumOneEmpty_ReturnEmptyString() {
 		calculator.setOperand(OPERAND_TIMES);
 		assertThat(calculator.operand, equalTo(""));
 	}
 	
 	@Test
-	public void setOpperand_NumOneSet_ReturnOpperand() {
+	public void setOperand_NumOneSet_ReturnOperand() {
 		calculator.numOne = NUM_LARGE;
 		calculator.setOperand(OPERAND_TIMES);
 		assertThat(calculator.operand, equalTo(OPERAND_TIMES));
 	}
 	
 	@Test
-	public void deleteValue_NumOneSetOpperandEmpty_ReturnNumOneMinusLastValue() {
+	public void deleteValue_NumOneSetOperandEmpty_ReturnNumOneMinusLastValue() {
 		calculator.numOne = NUM_LARGE;
 		calculator.deleteValue();
 		assertThat(calculator.numOne, equalTo(NUM_LARGE.substring(0, NUM_LARGE.length() - 1)));
@@ -94,7 +94,7 @@ public class CalculatorTest {
 	
 	
 	@Test
-	public void deleteValue_NumOneSetOpperandSetNumTwoBlank_ReturnNumSameValueAndOpperandBlank() {
+	public void deleteValue_NumOneSetOperandSetNumTwoBlank_ReturnNumSameValueAndOperandBlank() {
 		calculator.numOne = NUM_LARGE;
 		calculator.operand = OPERAND_TIMES;
 		calculator.deleteValue();
@@ -103,7 +103,7 @@ public class CalculatorTest {
 	}
 	
 	@Test
-	public void deleteValue_NumOneSetOpperandSetNumTwoSet_ReturnNumSameValueAndSameOpperandAndNumTwoMinusLastValue() {
+	public void deleteValue_NumOneSetOperandSetNumTwoSet_ReturnNumSameValueAndSameOperandAndNumTwoMinusLastValue() {
 		calculator.numOne = NUM_LARGE;
 		calculator.operand = OPERAND_TIMES;
 		calculator.numTwo = NUM_LARGE;
@@ -129,7 +129,7 @@ public class CalculatorTest {
 	}
 	
 	@Test
-	public void addNum_NumOneSetOpperandSet_NumTwoEqualsInput() {
+	public void addNum_NumOneSetOperandSet_NumTwoEqualsInput() {
 		calculator.numOne = NUM_LARGE;
 		calculator.operand = OPERAND_TIMES;
 		calculator.setFlags();
@@ -138,7 +138,7 @@ public class CalculatorTest {
 	}
 	
 	@Test
-	public void addNum_NumOneSetOpperandSetHasDec_NumTwoEqualsInput() {
+	public void addNum_NumOneSetOperandSetHasDec_NumTwoEqualsInput() {
 		calculator.numOne = NUM_LARGE;
 		calculator.operand = OPERAND_TIMES;
 		calculator.setFlags();
@@ -148,7 +148,7 @@ public class CalculatorTest {
 	}
 	
 	@Test
-	public void addNum_NumOneSetOpperandEmptyHasDec_NumTwoEqualsInput() {
+	public void addNum_NumOneSetOperandEmptyHasDec_NumTwoEqualsInput() {
 		calculator.numOne = NUM_LARGE;
 		calculator.setFlags();
 		calculator.addNum(DOT);
@@ -159,7 +159,7 @@ public class CalculatorTest {
 	}
 	
 	@Test
-	public void addSymbol_InputStarNumOneEmpty_OpperandBlankNumOneBlank() {
+	public void addSymbol_InputStarNumOneEmpty_OperandBlankNumOneBlank() {
 		calculator.addSymbol(OPERAND_TIMES);
 		assertThat(calculator.numOne, equalTo(""));
 		assertThat(calculator.operand, equalTo(""));
@@ -167,7 +167,7 @@ public class CalculatorTest {
 	
 	
 	@Test
-	public void addSymbol_InputMinusNumOneEmpty_OpperandBlankNumOneSet() {
+	public void addSymbol_InputMinusNumOneEmpty_OperandBlankNumOneSet() {
 		calculator.numOne = NUM_SINGLE_DIGIT;
 		calculator.addSymbol(OPERAND_MINUS);
 		assertThat(calculator.operand, equalTo(OPERAND_MINUS));
@@ -175,7 +175,7 @@ public class CalculatorTest {
 	
 	
 	@Test
-	public void addSymbol_InputPlusNumOneEmpty_OpperandBlankNumOneSet() {
+	public void addSymbol_InputPlusNumOneEmpty_OperandBlankNumOneSet() {
 		calculator.numOne = NUM_SINGLE_DIGIT;
 		calculator.addSymbol(OPERAND_PLUS);
 		assertThat(calculator.operand, equalTo(OPERAND_PLUS));
@@ -183,21 +183,21 @@ public class CalculatorTest {
 	
 	
 	@Test
-	public void addSymbol_InputDivideNumOneEmpty_OpperandBlankNumOneSet() {
+	public void addSymbol_InputDivideNumOneEmpty_OperandBlankNumOneSet() {
 		calculator.numOne = NUM_SINGLE_DIGIT;
 		calculator.addSymbol(OPERAND_DIVIDE);
 		assertThat(calculator.operand, equalTo(OPERAND_DIVIDE));
 	}
 	
 	@Test
-	public void addSymbol_InputStarNumOneSet_OpperandSet() {
+	public void addSymbol_InputStarNumOneSet_OperandSet() {
 		calculator.numOne = NUM_LARGE;
 		calculator.addSymbol(OPERAND_TIMES);
 		assertThat(calculator.operand, equalTo(OPERAND_TIMES));
 	}
 	
 	@Test
-	public void addSymbol_InputNumNumOneSetOpperandSet_NumTwoEqualsInput() {
+	public void addSymbol_InputNumNumOneSetOperandSet_NumTwoEqualsInput() {
 		calculator.numOne = NUM_LARGE;
 		calculator.operand = OPERAND_TIMES;
 		calculator.addSymbol(NUM_SINGLE_DIGIT);
