@@ -1,5 +1,7 @@
 package com.example.calcuitesting;
 
+import android.util.Log;
+
 public class Calculator {
 	public boolean isFirstNum;
 	public boolean hasPressedEquals;
@@ -87,7 +89,6 @@ public class Calculator {
 		} else {
 			isFirstNum = false;
 		}
-		
 	}
 	
 	public void addNum(String input) {
@@ -152,7 +153,6 @@ public class Calculator {
 		}
 	}
 	
-	
 	public String multiply(String numOne, String numTwo) {
 		return String.valueOf(strToDoub(numOne) * strToDoub(numTwo));
 	}
@@ -174,14 +174,21 @@ public class Calculator {
 	}
 	
 	public void powerOf(double numOne, double numTwo, double runningTotal) {
-		if (runningTotal == 0 && numTwo > 1) {
+		Log.i("TestPower", "test");
+		if(runningTotal == 0.0 && numTwo == 1.0){
+			setResult(String.valueOf(numOne));
+			return;
+		}
+		
+		if (runningTotal == 0.0 && numTwo > 1.0) {
 			runningTotal = numOne * numOne;
 			numTwo--;
 		}
 		
 		if (numTwo > 1) {
 			runningTotal *= numOne;
-			powerOf(numOne, numTwo - 1, runningTotal * numOne);
+			numTwo--;
+			powerOf(numOne, numTwo, runningTotal);
 		} else {
 			setResult(String.valueOf(runningTotal));
 		}

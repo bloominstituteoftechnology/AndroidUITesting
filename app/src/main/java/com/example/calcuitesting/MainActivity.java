@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-	Calculator calculator;
+	public static Calculator calculator;
 	TextView tvInput;
 	TextView tvResult;
 	
@@ -156,6 +156,14 @@ public class MainActivity extends AppCompatActivity {
 			@Override
 			public void onClick(View v) {
 				sendInput(buttonDelete.getText().toString().toLowerCase());
+			}
+		});
+		
+		final Button buttonDot = findViewById(R.id.btn_dot);
+		buttonDot.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				sendInput(buttonDot.getText().toString());
 			}
 		});
 	}
