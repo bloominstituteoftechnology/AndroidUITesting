@@ -9,7 +9,7 @@ import static org.junit.Assert.assertThat;
 
 public class CalculatorTest {
 
-    Calculator calculator;
+    private Calculator calculator;
 
     @Before
     public void initialize() {
