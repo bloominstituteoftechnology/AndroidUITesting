@@ -97,17 +97,22 @@ public class Calculator {
         return this.operand;
     }
 
-    public String calculate(){
+    public String calculate() {
         Double result = null;
 
-        if(firstNumber.equals("") && secondNumber.equals("") && keptSecondNumber != null && keptOperand != null){
+        if (firstNumber.equals("") && secondNumber.equals("") && keptSecondNumber != null && keptOperand != null) {
             firstNumber = keptResult;
             secondNumber = keptSecondNumber;
             operand = keptOperand;
         }
-        if(keptSecondNumber != null && keptResult != null){
+        if (keptSecondNumber != null && keptResult != null) {
             firstNumber = keptResult;
         }
+        if (!operand.equals(SQUARE_ROOT)){
+            if (firstNumber.equals("") || secondNumber.equals("") || operand == null) {
+                return INVALID;
+            }
+    }
         switch (operand){
             case ADD:
                 result = Double.parseDouble(firstNumber) + Double.parseDouble(secondNumber);
