@@ -105,12 +105,12 @@ public class CalculatorTest {
     @Test
     public void multiplication_One() {
         calculator.setExpression("123");
-        assertEquals(calculator.getExpression() + "x", calculator.multiplication());
+        assertEquals(calculator.getExpression() + "×", calculator.multiplication());
     }
 
     @Test
     public void multiplication_Multiple() {
-        calculator.setExpression("123x");
+        calculator.setExpression("123×");
         assertEquals(calculator.getExpression(), calculator.multiplication());
     }
 
@@ -220,13 +220,13 @@ public class CalculatorTest {
 
     @Test
     public void calculate_Multiplication_Integer() {
-        calculator.setExpression("123x123");
+        calculator.setExpression("123×123");
         assertEquals("15129", calculator.calculate());
     }
 
     @Test
     public void calculate_Multiplication_Decimal() {
-        calculator.setExpression("123.5x123.5");
+        calculator.setExpression("123.5×123.5");
         assertEquals("15252.25", calculator.calculate());
     }
 

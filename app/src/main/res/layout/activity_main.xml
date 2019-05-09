@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,12 +9,207 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/display_output"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="75sp"
+        android:layout_marginEnd="20sp"
+        android:fontFamily="@font/digital_7_family"
+        android:gravity="end"
         android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toTopOf="@+id/grid_layout"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <GridLayout
+        android:id="@+id/grid_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8sp"
+        android:layout_marginTop="15sp"
+        android:layout_marginEnd="8sp"
+        android:columnCount="4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/display_output">
+
+        <Button
+            android:id="@+id/button_1"
+            android:layout_width="wrap_content"
+            android:layout_height="75sp"
+            android:fontFamily="@font/digital_7_family"
+            android:text="1"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/button_2"
+            android:layout_width="wrap_content"
+            android:layout_height="75sp"
+            android:fontFamily="@font/digital_7_family"
+            android:text="2"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/button_3"
+            android:layout_width="wrap_content"
+            android:layout_height="75sp"
+            android:fontFamily="@font/digital_7_family"
+            android:text="3"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/button_plus"
+            android:layout_width="wrap_content"
+            android:layout_height="75sp"
+            android:fontFamily="@font/digital_7_family"
+            android:text="+"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/button_4"
+            android:layout_width="wrap_content"
+            android:layout_height="75sp"
+            android:fontFamily="@font/digital_7_family"
+            android:text="4"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/button_5"
+            android:layout_width="wrap_content"
+            android:layout_height="75sp"
+            android:fontFamily="@font/digital_7_family"
+            android:text="5"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/button_6"
+            android:layout_width="wrap_content"
+            android:layout_height="75sp"
+            android:fontFamily="@font/digital_7_family"
+            android:text="6"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/button_minus"
+            android:layout_width="wrap_content"
+            android:layout_height="75sp"
+            android:fontFamily="@font/digital_7_family"
+            android:text="-"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/button_7"
+            android:layout_width="wrap_content"
+            android:layout_height="75sp"
+            android:fontFamily="@font/digital_7_family"
+            android:text="7"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/button_8"
+            android:layout_width="wrap_content"
+            android:layout_height="75sp"
+            android:fontFamily="@font/digital_7_family"
+            android:text="8"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/button_9"
+            android:layout_width="wrap_content"
+            android:layout_height="75sp"
+            android:fontFamily="@font/digital_7_family"
+            android:text="9"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/button_times"
+            android:layout_width="wrap_content"
+            android:layout_height="75sp"
+            android:fontFamily="@font/digital_7_family"
+            android:text="×"
+            android:textSize="25sp" />
+
+        <Space />
+
+        <Button
+            android:id="@+id/button_0"
+            android:layout_width="wrap_content"
+            android:layout_height="75sp"
+            android:fontFamily="@font/digital_7_family"
+            android:text="0"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/button_decimal"
+            android:layout_width="wrap_content"
+            android:layout_height="75sp"
+            android:fontFamily="@font/digital_7_family"
+            android:text="."
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/button_divided_by"
+            android:layout_width="wrap_content"
+            android:layout_height="75sp"
+            android:fontFamily="@font/digital_7_family"
+            android:text="÷"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/button_squared"
+            android:layout_width="wrap_content"
+            android:layout_height="75sp"
+            android:fontFamily="@font/digital_7_family"
+            android:text="²"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/button_square_root"
+            android:layout_width="wrap_content"
+            android:layout_height="75sp"
+            android:fontFamily="@font/digital_7_family"
+            android:text="√"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/button_pi"
+            android:layout_width="wrap_content"
+            android:layout_height="75sp"
+            android:fontFamily="@font/digital_7_family"
+            android:text="π"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/button_equals"
+            android:layout_width="wrap_content"
+            android:layout_height="75sp"
+            android:fontFamily="@font/digital_7_family"
+            android:text="="
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/button_reset"
+            android:layout_width="wrap_content"
+            android:layout_height="75sp"
+            android:fontFamily="@font/digital_7_family"
+            android:text="clear"
+            android:textSize="25sp" />
+
+        <Space />
+
+        <Button
+            android:id="@+id/button_backspace"
+            android:layout_width="wrap_content"
+            android:layout_height="75sp"
+            android:fontFamily="@font/digital_7_family"
+            android:text="←"
+            android:textSize="25sp" />
+
+
+    </GridLayout>
 
 </android.support.constraint.ConstraintLayout>

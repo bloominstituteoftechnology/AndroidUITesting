@@ -49,8 +49,8 @@ public class Calculator {
     }
 
     public String multiplication() {
-        if (this.expression.length() > 0 && !this.expression.contains("x"))
-            this.expression += "x";
+        if (this.expression.length() > 0 && !this.expression.contains("×"))
+            this.expression += "×";
 
         return this.expression;
     }
@@ -86,7 +86,7 @@ public class Calculator {
     public String calculate() {
         if (this.expression.length() > 0) {
             if (this.reCalculate.equals("")) {
-                Pattern deconstructedPattern = Pattern.compile("([\\dπ.]+)([+\\-x÷²√π])?([\\dπ.]+)?");
+                Pattern deconstructedPattern = Pattern.compile("([\\dπ.]+)([+\\-×÷²√π])?([\\dπ.]+)?");
                 Matcher deconstructedMatcher = deconstructedPattern.matcher(this.expression);
 
                 ArrayList<String> separatedGroups = new ArrayList<>();
@@ -112,9 +112,9 @@ public class Calculator {
                             this.expression = String.valueOf(Double.parseDouble(separatedGroups.get(0)) - Double.parseDouble(separatedGroups.get(2)));
                             this.reCalculate = "-" + separatedGroups.get(2);
                             break;
-                        case "x":
+                        case "×":
                             this.expression = String.valueOf(Double.parseDouble(separatedGroups.get(0)) * Double.parseDouble(separatedGroups.get(2)));
-                            this.reCalculate = "x" + separatedGroups.get(2);
+                            this.reCalculate = "×" + separatedGroups.get(2);
                             break;
                         case "÷":
                             this.expression = String.valueOf(Double.parseDouble(separatedGroups.get(0)) / Double.parseDouble(separatedGroups.get(2)));
@@ -142,7 +142,7 @@ public class Calculator {
                     case '-':
                         this.expression = String.valueOf(Double.parseDouble(this.expression) - Double.parseDouble(this.reCalculate.substring(1)));
                         break;
-                    case 'x':
+                    case '×':
                         this.expression = String.valueOf(Double.parseDouble(this.expression) * Double.parseDouble(this.reCalculate.substring(1)));
                         break;
                     case '÷':
