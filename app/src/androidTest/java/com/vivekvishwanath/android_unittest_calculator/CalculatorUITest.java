@@ -184,8 +184,51 @@ public class CalculatorUITest {
         onView(withId(R.id.six_button)).perform((click()));
         onView(withId(R.id.equals_button)).perform((click()));
         onView(withId(R.id.display_screen)).check(matches(withText(Double.toString(sum))));
+    }
 
+    @Test
+    public void calculatorUITest_subtractTwoNumbers() {
+        double firstNum = Double.parseDouble(((Button)mainActivityActivityTestRule
+                .getActivity().findViewById(R.id.eight_button)).getText().toString());
+        double secondNum = Double.parseDouble(((Button)mainActivityActivityTestRule
+                .getActivity().findViewById(R.id.five_button)).getText().toString());
+        double difference = firstNum - secondNum;
+        onView((withId(R.id.display_screen))).perform(clearText());
+        onView(withId(R.id.eight_button)).perform((click()));
+        onView(withId(R.id.subtract_button)).perform((click()));
+        onView(withId(R.id.five_button)).perform((click()));
+        onView(withId(R.id.equals_button)).perform((click()));
+        onView(withId(R.id.display_screen)).check(matches(withText(Double.toString(difference))));
+    }
 
+    @Test
+    public void calculatorUITest_multiplyTwoNumbers() {
+        double firstNum = Double.parseDouble(((Button)mainActivityActivityTestRule
+                .getActivity().findViewById(R.id.four_button)).getText().toString());
+        double secondNum = Double.parseDouble(((Button)mainActivityActivityTestRule
+                .getActivity().findViewById(R.id.nine_button)).getText().toString());
+        double product = firstNum * secondNum;
+        onView((withId(R.id.display_screen))).perform(clearText());
+        onView(withId(R.id.four_button)).perform((click()));
+        onView(withId(R.id.multiply_button)).perform((click()));
+        onView(withId(R.id.nine_button)).perform((click()));
+        onView(withId(R.id.equals_button)).perform((click()));
+        onView(withId(R.id.display_screen)).check(matches(withText(Double.toString(product))));
+    }
+
+    @Test
+    public void calculatorUITest_divideTwoNumbers() {
+        double firstNum = Double.parseDouble(((Button)mainActivityActivityTestRule
+                .getActivity().findViewById(R.id.two_button)).getText().toString());
+        double secondNum = Double.parseDouble(((Button)mainActivityActivityTestRule
+                .getActivity().findViewById(R.id.six_button)).getText().toString());
+        double quotient = firstNum / secondNum;
+        onView((withId(R.id.display_screen))).perform(clearText());
+        onView(withId(R.id.two_button)).perform((click()));
+        onView(withId(R.id.divide_button)).perform((click()));
+        onView(withId(R.id.six_button)).perform((click()));
+        onView(withId(R.id.equals_button)).perform((click()));
+        onView(withId(R.id.display_screen)).check(matches(withText(Double.toString(quotient))));
     }
 
 }

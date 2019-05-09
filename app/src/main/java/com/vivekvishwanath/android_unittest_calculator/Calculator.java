@@ -76,7 +76,7 @@ public class Calculator implements Serializable {
     public String multiply() {
         if (enteredSymbols.contains("x")) {
             previousSymbols = enteredSymbols;
-            String[] numbers = enteredSymbols.split("\\*");
+            String[] numbers = enteredSymbols.split("x");
             double before = Double.parseDouble(numbers[0]);
             double after = Double.parseDouble(numbers[1]);
 

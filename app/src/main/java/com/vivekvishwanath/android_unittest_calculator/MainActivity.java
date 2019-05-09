@@ -69,6 +69,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.nine_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayScreen.setText(calculator.addSymbol(((Button)v).getText().toString()));
+            }
+        });
+
         findViewById(R.id.eight_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
