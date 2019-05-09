@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView textOutput;
     Button buttonAdd, buttonMultiply, buttonDivide, buttonSubtract, button1, button2, button3, button4, button5,
-    button6, button7, button8, button9, button0, buttonSqRt, buttonSquare, buttonDot, buttonEquals, buttonClear;
+    button6, button7, button8, button9, button0, buttonSqRt, buttonSquare, buttonDot, buttonEquals, buttonBack, buttonClear;
 
     Calculator calculator;
 
@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         buttonDot = findViewById(R.id.button_dot);
         buttonEquals = findViewById(R.id.button_equals);
         buttonClear = findViewById(R.id.button_clear);
+        buttonBack = findViewById(R.id.button_back);
 
         button0.setOnClickListener(addSymbolOnClick);
         button1.setOnClickListener(addSymbolOnClick);
@@ -77,6 +78,18 @@ public class MainActivity extends AppCompatActivity {
                 calculator.clear();
                 textOutput.setText("Output");
                 resetOperand();
+            }
+        });
+
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String back = calculator.removeLastSymbol();
+                if(back.equals("")){
+                    resetOperand();
+                }else{
+                    textOutput.setText(back);
+                }
             }
         });
     }

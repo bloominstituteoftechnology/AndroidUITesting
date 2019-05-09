@@ -77,7 +77,7 @@ public class Calculator {
     }
 
     public String setOperand(String operand){
-        if(firstNumber.equals("")){
+        if(firstNumber.equals("") && keptResult == null && keptSecondNumber == null){
             return INVALID;
         }
         if(operand.equals(SQUARE)){
@@ -104,6 +104,9 @@ public class Calculator {
             firstNumber = keptResult;
             secondNumber = keptSecondNumber;
             operand = keptOperand;
+        }
+        if(keptSecondNumber != null && keptResult != null){
+            firstNumber = keptResult;
         }
         switch (operand){
             case ADD:
