@@ -4,12 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     private Calculator calculator;
-    private TextView displayScreen;
+    private EditText displayScreen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +21,69 @@ public class MainActivity extends AppCompatActivity {
         displayScreen = findViewById(R.id.display_screen);
 
         findViewById(R.id.one_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayScreen.setText(calculator.addSymbol(((Button)v).getText().toString()));
+            }
+        });
+
+        findViewById(R.id.two_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayScreen.setText(calculator.addSymbol(((Button)v).getText().toString()));
+            }
+        });
+
+        findViewById(R.id.three_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayScreen.setText(calculator.addSymbol(((Button)v).getText().toString()));
+            }
+        });
+
+        findViewById(R.id.four_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayScreen.setText(calculator.addSymbol(((Button)v).getText().toString()));
+            }
+        });
+
+        findViewById(R.id.five_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayScreen.setText(calculator.addSymbol(((Button)v).getText().toString()));
+            }
+        });
+
+        findViewById(R.id.six_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayScreen.setText(calculator.addSymbol(((Button)v).getText().toString()));
+            }
+        });
+
+        findViewById(R.id.seven_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayScreen.setText(calculator.addSymbol(((Button)v).getText().toString()));
+            }
+        });
+
+        findViewById(R.id.eight_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayScreen.setText(calculator.addSymbol(((Button)v).getText().toString()));
+            }
+        });
+
+        findViewById(R.id.nine_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayScreen.setText(calculator.addSymbol(((Button)v).getText().toString()));
+            }
+        });
+
+        findViewById(R.id.decimal_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 displayScreen.setText(calculator.addSymbol(((Button)v).getText().toString()));
