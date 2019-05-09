@@ -132,5 +132,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.clear_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayScreen.setText(calculator.clear());
+            }
+        });
+
+        findViewById(R.id.delete_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayScreen.setText(calculator.delete());
+            }
+        });
+
     }
 }

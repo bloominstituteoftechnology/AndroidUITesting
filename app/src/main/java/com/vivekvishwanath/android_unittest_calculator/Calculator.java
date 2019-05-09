@@ -139,4 +139,11 @@ public class Calculator implements Serializable {
         return enteredSymbols;
     }
 
+    public String delete() {
+        if (!enteredSymbols.equals("") && enteredSymbols != null) {
+            enteredSymbols = enteredSymbols.substring(0, enteredSymbols.length() - 1);
+        }
+        return enteredSymbols;
+    }
+
 }

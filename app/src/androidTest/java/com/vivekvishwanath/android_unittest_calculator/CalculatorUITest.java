@@ -1,6 +1,7 @@
 package com.vivekvishwanath.android_unittest_calculator;
 
 import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.test.rule.ActivityTestRule;
 
@@ -230,5 +231,42 @@ public class CalculatorUITest {
         onView(withId(R.id.equals_button)).perform((click()));
         onView(withId(R.id.display_screen)).check(matches(withText(Double.toString(quotient))));
     }
+
+    @Test
+    public void calculatorUITest_clearDisplay() {
+        onView((withId(R.id.display_screen))).perform(clearText());
+        String clearedDisplay = ((EditText) mainActivityActivityTestRule.getActivity()
+                .findViewById(R.id.display_screen)).getText().toString();
+        onView(withId(R.id.two_button)).perform((click()));
+        onView(withId(R.id.divide_button)).perform((click()));
+        onView(withId(R.id.six_button)).perform((click()));
+        onView(withId(R.id.clear_button)).perform((click()));
+        onView(withId(R.id.display_screen)).check(matches(withText(clearedDisplay)));
+    }
+
+    @Test
+    public void calculatorUITest_deleteSingleSymbol() {
+        onView((withId(R.id.display_screen))).perform(clearText());
+        String clearedDisplay = ((EditText) mainActivityActivityTestRule.getActivity()
+                .findViewById(R.id.display_screen)).getText().toString();
+        onView(withId(R.id.two_button)).perform((click()));
+        onView(withId(R.id.delete_button)).perform((click()));
+        onView(withId(R.id.display_screen)).check(matches(withText(clearedDisplay)));
+    }
+
+    @Test
+    public void calculatorUITest_deleteMultipleSymbols() {
+        onView((withId(R.id.display_screen))).perform(clearText());
+        String clearedDisplay = ((EditText) mainActivityActivityTestRule.getActivity()
+                .findViewById(R.id.display_screen)).getText().toString();
+        onView(withId(R.id.two_button)).perform((click()));
+        onView(withId(R.id.two_button)).perform((click()));
+        onView(withId(R.id.two_button)).perform((click()));
+        onView(withId(R.id.delete_button)).perform((click()));
+        onView(withId(R.id.delete_button)).perform((click()));
+        onView(withId(R.id.delete_button)).perform((click()));
+        onView(withId(R.id.display_screen)).check(matches(withText(clearedDisplay)));
+    }
+
 
 }
