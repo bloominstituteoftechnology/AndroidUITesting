@@ -79,7 +79,7 @@ public class Calculator {
     public String calculate() {
         if (this.expression.length() > 0) {
             if (this.reCalculate.equals("")) {
-                Pattern deconstructedPattern = Pattern.compile("([\\dπ.]+)([+\\-×÷²√π])?([\\dπ.]+)?");
+                Pattern deconstructedPattern = Pattern.compile("(^-?[\\dπ.]+)([+\\-×÷²√π])?([\\dπ.]+)?");
                 Matcher deconstructedMatcher = deconstructedPattern.matcher(this.expression);
 
                 ArrayList<String> separatedGroups = new ArrayList<>();
@@ -162,8 +162,10 @@ public class Calculator {
     }
 
     public String backspace() {
-        if (this.expression.length() > 0)
+        if (this.expression.length() > 0) {
             this.expression = this.expression.substring(0, this.expression.length() - 1);
+            this.reCalculate = "";
+        }
 
         return this.expression;
     }
