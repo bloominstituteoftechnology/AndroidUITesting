@@ -82,49 +82,49 @@ public class MainActivity extends AppCompatActivity {
         ((Button) findViewById(R.id.button_plus)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                displayOutput.setText(calculator.addSymbol("+"));
+                displayOutput.setText(calculator.addition());
             }
         });
         ((Button) findViewById(R.id.button_minus)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                displayOutput.setText(calculator.addSymbol("-"));
+                displayOutput.setText(calculator.subtraction());
             }
         });
         ((Button) findViewById(R.id.button_times)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                displayOutput.setText(calculator.addSymbol("×"));
+                displayOutput.setText(calculator.multiplication());
             }
         });
         ((Button) findViewById(R.id.button_divided_by)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                displayOutput.setText(calculator.addSymbol("÷"));
+                displayOutput.setText(calculator.division());
             }
         });
         ((Button) findViewById(R.id.button_squared)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                displayOutput.setText(calculator.addSymbol("²"));
+                displayOutput.setText(calculator.square());
             }
         });
         ((Button) findViewById(R.id.button_square_root)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                displayOutput.setText(calculator.addSymbol("√"));
+                displayOutput.setText(calculator.squareRoot());
             }
         });
         ((Button) findViewById(R.id.button_pi)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                displayOutput.setText(calculator.addSymbol("π"));
+                displayOutput.setText(calculator.pi());
             }
         });
         ((Button) findViewById(R.id.button_decimal)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                displayOutput.setText(calculator.addSymbol("."));
+                displayOutput.setText(calculator.addDecimal());
             }
         });
         ((Button) findViewById(R.id.button_calculate)).setOnClickListener(new View.OnClickListener() {

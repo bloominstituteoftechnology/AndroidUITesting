@@ -189,7 +189,7 @@ public class MainActivityTest {
         Thread.sleep(DELAY_TIME);
         calculator.reset();
         Thread.sleep(DELAY_TIME);
-        onView(withId(R.id.display_output)).check(matches(withText(calculator.addSymbol("+"))));
+        onView(withId(R.id.display_output)).check(matches(withText(calculator.addition())));
     }
 
     @Test
@@ -201,7 +201,7 @@ public class MainActivityTest {
         Thread.sleep(DELAY_TIME);
         calculator.reset();
         Thread.sleep(DELAY_TIME);
-        onView(withId(R.id.display_output)).check(matches(withText(calculator.addSymbol("-"))));
+        onView(withId(R.id.display_output)).check(matches(withText(calculator.subtraction())));
     }
 
     @Test
@@ -213,7 +213,7 @@ public class MainActivityTest {
         Thread.sleep(DELAY_TIME);
         calculator.reset();
         Thread.sleep(DELAY_TIME);
-        onView(withId(R.id.display_output)).check(matches(withText(calculator.addSymbol("×"))));
+        onView(withId(R.id.display_output)).check(matches(withText(calculator.multiplication())));
     }
 
     @Test
@@ -225,7 +225,7 @@ public class MainActivityTest {
         Thread.sleep(DELAY_TIME);
         calculator.reset();
         Thread.sleep(DELAY_TIME);
-        onView(withId(R.id.display_output)).check(matches(withText(calculator.addSymbol("÷"))));
+        onView(withId(R.id.display_output)).check(matches(withText(calculator.division())));
     }
 
     @Test
@@ -237,7 +237,7 @@ public class MainActivityTest {
         Thread.sleep(DELAY_TIME);
         calculator.reset();
         Thread.sleep(DELAY_TIME);
-        onView(withId(R.id.display_output)).check(matches(withText(calculator.addSymbol("²"))));
+        onView(withId(R.id.display_output)).check(matches(withText(calculator.square())));
     }
 
     @Test
@@ -249,7 +249,7 @@ public class MainActivityTest {
         Thread.sleep(DELAY_TIME);
         calculator.reset();
         Thread.sleep(DELAY_TIME);
-        onView(withId(R.id.display_output)).check(matches(withText(calculator.addSymbol("√"))));
+        onView(withId(R.id.display_output)).check(matches(withText(calculator.squareRoot())));
     }
 
     @Test
@@ -261,7 +261,7 @@ public class MainActivityTest {
         Thread.sleep(DELAY_TIME);
         calculator.reset();
         Thread.sleep(DELAY_TIME);
-        onView(withId(R.id.display_output)).check(matches(withText(calculator.addSymbol("π"))));
+        onView(withId(R.id.display_output)).check(matches(withText(calculator.pi())));
     }
 
     @Test
@@ -273,7 +273,7 @@ public class MainActivityTest {
         Thread.sleep(DELAY_TIME);
         calculator.reset();
         Thread.sleep(DELAY_TIME);
-        onView(withId(R.id.display_output)).check(matches(withText(calculator.addSymbol("."))));
+        onView(withId(R.id.display_output)).check(matches(withText(calculator.addDecimal())));
     }
 
     @Test

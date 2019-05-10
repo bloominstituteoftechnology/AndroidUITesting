@@ -87,12 +87,12 @@ public class CalculatorTest {
     @Test
     public void subtraction_One() {
         calculator.setExpression("123");
-        assertEquals(calculator.getExpression() + "-", calculator.subtraction());
+        assertEquals(calculator.getExpression() + "—", calculator.subtraction());
     }
 
     @Test
     public void subtraction_Multiple() {
-        calculator.setExpression("123-");
+        calculator.setExpression("123—");
         assertEquals(calculator.getExpression(), calculator.subtraction());
     }
 
@@ -208,13 +208,13 @@ public class CalculatorTest {
 
     @Test
     public void calculate_Subtraction_Integer() {
-        calculator.setExpression("123-123");
+        calculator.setExpression("123—123");
         assertEquals("0", calculator.calculate());
     }
 
     @Test
     public void calculate_Subtraction_Decimal() {
-        calculator.setExpression("123.5-123.5");
+        calculator.setExpression("123.5—123.5");
         assertEquals("0", calculator.calculate());
     }
 

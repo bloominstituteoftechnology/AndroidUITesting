@@ -10,6 +10,8 @@ public class Calculator {
     private String expression;
     private String reCalculate;
 
+    private enum Operator {ADD, SUBTRACT, MULTIPLY, DIVIDE, SQUARED, SQUARE_ROOT}
+
     public Calculator() {
         this.expression = "";
         this.reCalculate = "";
@@ -17,12 +19,14 @@ public class Calculator {
 
     public String addSymbol(String symbol) {
         this.expression += symbol;
+        this.reCalculate = "";
         return this.expression;
     }
 
     public String addDecimal() {
         if (!this.expression.contains("."))
             this.expression += ".";
+        this.reCalculate = "";
 
         return this.expression;
     }
@@ -30,13 +34,15 @@ public class Calculator {
     public String addition() {
         if (this.expression.length() > 0 && !this.expression.contains("+"))
             this.expression += "+";
+        this.reCalculate = "";
 
         return this.expression;
     }
 
     public String subtraction() {
-        if (this.expression.length() > 0 && !this.expression.contains("-"))
-            this.expression += "-";
+        if (this.expression.length() > 0 && !this.expression.contains("—"))
+            this.expression += "—";
+        this.reCalculate = "";
 
         return this.expression;
     }
@@ -44,6 +50,7 @@ public class Calculator {
     public String multiplication() {
         if (this.expression.length() > 0 && !this.expression.contains("×"))
             this.expression += "×";
+        this.reCalculate = "";
 
         return this.expression;
     }
@@ -51,6 +58,7 @@ public class Calculator {
     public String division() { // ALT 0247
         if (this.expression.length() > 0 && !this.expression.contains("÷"))
             this.expression += "÷";
+        this.reCalculate = "";
 
         return this.expression;
     }
@@ -58,6 +66,7 @@ public class Calculator {
     public String square() { // ALT 0178
         if (this.expression.length() > 0 && !this.expression.contains("²"))
             this.expression += "²";
+        this.reCalculate = "";
 
         return this.expression;
     }
@@ -65,6 +74,7 @@ public class Calculator {
     public String squareRoot() { // ALT 251
         if (this.expression.length() > 0 && !this.expression.contains("√"))
             this.expression += "√";
+        this.reCalculate = "";
 
         return this.expression;
     }
@@ -72,86 +82,113 @@ public class Calculator {
     public String pi() { // ALT 227
         if (!this.expression.contains("π"))
             this.expression += "π";
+        this.reCalculate = "";
 
         return this.expression;
     }
 
     public String calculate() {
         if (this.expression.length() > 0) {
-            if (this.reCalculate.equals("")) {
-                Pattern deconstructedPattern = Pattern.compile("(^-?[\\dπ.]+)([+\\-×÷²√π])?([\\dπ.]+)?");
-                Matcher deconstructedMatcher = deconstructedPattern.matcher(this.expression);
 
-                ArrayList<String> separatedGroups = new ArrayList<>();
-                if (deconstructedMatcher.find()) {
-                    for (int i = 1; i <= deconstructedMatcher.groupCount(); ++i) {
-                        separatedGroups.add(deconstructedMatcher.group(i));
-                    }
-                    separatedGroups.removeAll(Collections.singleton(null));
+            String expressionToCalculate = this.reCalculate.equals("") ? this.expression : this.reCalculate;
+
+            Pattern deconstructedPattern = Pattern.compile("(^-?[\\dπ.]+)?([+—×÷²√π])?([\\dπ.]+)?");
+            Matcher deconstructedMatcher = deconstructedPattern.matcher(expressionToCalculate);
+
+            ArrayList<String> separatedGroups = new ArrayList<>();
+            if (deconstructedMatcher.find()) {
+                for (int i = 1; i <= deconstructedMatcher.groupCount(); ++i) {
+                    separatedGroups.add(deconstructedMatcher.group(i));
                 }
+                separatedGroups.removeAll(Collections.singleton(null));
+            }
 
-                if (separatedGroups.size() == 1) {
-                    if (separatedGroups.get(0).equals("π")) {
-                        this.expression = String.valueOf(Math.PI);
-                    }
-                } else if (separatedGroups.size() == 3) {
+            ArrayList<Double> operands = new ArrayList<>();
+            ArrayList<Operator> operators = new ArrayList<>();
 
-                    switch (separatedGroups.get(1)) {
-                        case "+":
-                            this.expression = String.valueOf(Double.parseDouble(separatedGroups.get(0)) + Double.parseDouble(separatedGroups.get(2)));
-                            this.reCalculate = "+" + separatedGroups.get(2);
-                            break;
-                        case "-":
-                            this.expression = String.valueOf(Double.parseDouble(separatedGroups.get(0)) - Double.parseDouble(separatedGroups.get(2)));
-                            this.reCalculate = "-" + separatedGroups.get(2);
-                            break;
-                        case "×":
-                            this.expression = String.valueOf(Double.parseDouble(separatedGroups.get(0)) * Double.parseDouble(separatedGroups.get(2)));
-                            this.reCalculate = "×" + separatedGroups.get(2);
-                            break;
-                        case "÷":
-                            this.expression = String.valueOf(Double.parseDouble(separatedGroups.get(0)) / Double.parseDouble(separatedGroups.get(2)));
-                            this.reCalculate = "÷" + separatedGroups.get(2);
-                            break;
-                        case "²":
-                            this.expression = String.valueOf(Double.parseDouble(separatedGroups.get(0)) * Double.parseDouble(separatedGroups.get(0)));
-                            this.reCalculate = "²" + this.expression;
-                            break;
-                        case "√":
-                            this.expression = String.valueOf(Math.sqrt(Double.parseDouble(separatedGroups.get(0))));
-                            this.reCalculate = "√" + this.expression;
-                            break;
-                        case "π":
-                            this.expression = String.valueOf(Double.parseDouble(separatedGroups.get(0)) * Math.PI);
-                            this.reCalculate = "π" + this.expression;
-                            break;
-                    }
-                }
-            } else {
-                switch (this.reCalculate.charAt(0)) {
-                    case '+':
-                        this.expression = String.valueOf(Double.parseDouble(this.expression) + Double.parseDouble(this.reCalculate.substring(1)));
+            for (String segment : separatedGroups) {
+
+                switch (segment) {
+                    case "+":
+                        operators.add(Operator.ADD);
                         break;
-                    case '-':
-                        this.expression = String.valueOf(Double.parseDouble(this.expression) - Double.parseDouble(this.reCalculate.substring(1)));
+                    case "—":
+                        operators.add(Operator.SUBTRACT);
                         break;
-                    case '×':
-                        this.expression = String.valueOf(Double.parseDouble(this.expression) * Double.parseDouble(this.reCalculate.substring(1)));
+                    case "×":
+                        operators.add(Operator.MULTIPLY);
                         break;
-                    case '÷':
-                        this.expression = String.valueOf(Double.parseDouble(this.expression) / Double.parseDouble(this.reCalculate.substring(1)));
+                    case "÷":
+                        operators.add(Operator.DIVIDE);
                         break;
-                    case '²':
-                        this.expression = String.valueOf(Double.parseDouble(this.expression) * Double.parseDouble(this.expression));
+                    case "²":
+                        operators.add(Operator.SQUARED);
                         break;
-                    case '√':
-                        this.expression = String.valueOf(Math.sqrt(Double.parseDouble(this.expression)));
+                    case "√":
+                        operators.add(Operator.SQUARE_ROOT);
                         break;
-                    case 'π':
-                        this.expression = String.valueOf(Double.parseDouble(this.expression) * Math.PI);
+                    case "π":
+                        operands.add(Math.PI);
+                        break;
+                    default:
+                        operands.add(Double.parseDouble(segment));
                         break;
                 }
             }
+
+            if (operators.size() > 0 && operands.size() > 0) {
+                switch (operators.get(0)) {
+                    case ADD:
+                        if (operands.size() > 1) {
+                            this.expression = String.valueOf(operands.get(0) + operands.get(1));
+                            this.reCalculate = "+" + operands.get(1);
+                        } else {
+                            this.expression = String.valueOf(Double.parseDouble(this.expression) + operands.get(0));
+                        }
+                        break;
+                    case SUBTRACT:
+                        if (operands.size() > 1) {
+                            this.expression = String.valueOf(operands.get(0) - operands.get(1));
+                            this.reCalculate = "—" + operands.get(1);
+                        } else {
+                            this.expression = String.valueOf(Double.parseDouble(this.expression) - operands.get(0));
+                        }
+                        break;
+                    case MULTIPLY:
+                        if (operands.size() > 1) {
+                            this.expression = String.valueOf(operands.get(0) * operands.get(1));
+                            this.reCalculate = "×" + operands.get(1);
+                        } else {
+                            this.expression = String.valueOf(Double.parseDouble(this.expression) * operands.get(0));
+                        }
+                        break;
+                    case DIVIDE:
+                        if (operands.size() > 1) {
+                            this.expression = String.valueOf(operands.get(0) / operands.get(1));
+                            this.reCalculate = "÷" + operands.get(1);
+                        } else {
+                            this.expression = String.valueOf(Double.parseDouble(this.expression) / operands.get(0));
+                        }
+                        break;
+                    case SQUARED:
+                        if (operands.size() > 1) {
+                            this.expression = String.valueOf(operands.get(0) * operands.get(0));
+                            this.reCalculate = "²" + this.expression;
+                        } else {
+                            this.expression = String.valueOf(Double.parseDouble(this.expression) * Double.parseDouble(this.expression));
+                        }
+                        break;
+                    case SQUARE_ROOT:
+                        if (operands.size() > 1) {
+                            this.expression = String.valueOf(Math.sqrt(operands.get(0)));
+                            this.reCalculate = "√" + this.expression;
+                        } else {
+                            this.expression = String.valueOf(Math.sqrt(Double.parseDouble(this.expression)));
+                        }
+                        break;
+                }
+            }
+
 
             if (this.expression.endsWith(".0")) {
                 this.expression = this.expression.replace(".0", "");
@@ -164,8 +201,8 @@ public class Calculator {
     public String backspace() {
         if (this.expression.length() > 0) {
             this.expression = this.expression.substring(0, this.expression.length() - 1);
-            this.reCalculate = "";
         }
+        this.reCalculate = "";
 
         return this.expression;
     }
