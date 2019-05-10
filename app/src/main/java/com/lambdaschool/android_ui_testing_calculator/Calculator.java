@@ -27,13 +27,6 @@ public class Calculator {
         return this.expression;
     }
 
-    public String backspace() {
-        if (this.expression.length() > 0)
-            this.expression = this.expression.substring(0, this.expression.length() - 1);
-
-        return this.expression;
-    }
-
     public String addition() {
         if (this.expression.length() > 0 && !this.expression.contains("+"))
             this.expression += "+";
@@ -164,6 +157,13 @@ public class Calculator {
                 this.expression = this.expression.replace(".0", "");
             }
         }
+
+        return this.expression;
+    }
+
+    public String backspace() {
+        if (this.expression.length() > 0)
+            this.expression = this.expression.substring(0, this.expression.length() - 1);
 
         return this.expression;
     }
