@@ -13,27 +13,32 @@ public class Calculator {
     private String strLog,strNumber,strResult;
     ArrayList<String> alstrCalc;
     ArrayList<String> alstrOld;
-    ArrayList<String> alstrBracket;
+
 
     public Calculator(){
         strLog="";
         strNumber="";
         this.alstrCalc=new ArrayList<String>( 1 );
+
     }
 
-    private boolean isAfterEaual=false;
+    private boolean isAfterEqaual=false;
 
 
     private void setOperator(char cOperator){
-        if(isAfterEaual){
+        if(isAfterEqaual){
             alstrCalc.set(alstrCalc.size()-1,  strNumber );
         }else{
-            alstrCalc.add( strNumber );
+            if(strNumber==""){
+
+            }else{
+                alstrCalc.add( strNumber );
+            }
         }
         strNumber="";
         alstrCalc.add(Character.toString(   cOperator) );
         strLog+=cOperator;
-        isAfterEaual=false;
+        isAfterEqaual=false;
     }
 
     public void addSymbol(char chrX){
@@ -122,17 +127,23 @@ public class Calculator {
                 alstrCalc.clear();
                 strLog="";
                 strNumber="";
-                isAfterEaual=false;
+                isAfterEqaual=false;
 
                 break;
             case '=':
-                if(strNumber==""){
+                if(isOperatorExcludesRightBracket( alstrCalc.get(alstrCalc.size()-1))){
                     strResult="cannot end with operator";
                     break;
                 }
-                if(isAfterEaual){
-                    alstrCalc.set(alstrCalc.size()-1, strNumber );                }else{
-                    alstrCalc.add( strNumber );
+                if(isAfterEqaual){
+                    alstrCalc.set(alstrCalc.size()-1, strNumber );
+                }else{
+                    if(strNumber==""){
+
+                    }else{
+                        alstrCalc.add( strNumber );
+                    }
+
                 }
 
 
@@ -142,7 +153,7 @@ public class Calculator {
                     break;
                 }
                 calculate( );
-                isAfterEaual=true;
+                isAfterEqaual=true;
                 break;
 
             case 'A':
@@ -219,18 +230,79 @@ public class Calculator {
 
     private void calculate(){
 
+        ArrayList<String> temp= (ArrayList<String>) alstrCalc.clone();
 
-        if(alstrCalc.contains( "(" )){
+        do{
+            temp= eliminateBracket(temp);
 
-        }
-
-        alstrBracket= (ArrayList<String>) alstrCalc.clone();
-        strResult=calcInBracket( alstrBracket );
+        } while (temp.contains( "(") );
+        strResult=calcInBracket( temp );
 
 
 
     }
 
+    private ArrayList<String> eliminateBracket(ArrayList<String> x){
+        ArrayList<String> temp= new ArrayList<String>();
+        int left=0,right=x.size()-1;
+        String leftOfBracket="1";
+        for(int i=0;i<=right;i++){
+            if(x.get( i ).contains( "(" )){
+                temp.clear();
+                left=i;
+                if(i>0){
+                    leftOfBracket=x.get( left-1 );
+                }
+
+            }else if(alstrCalc.get( i ).contains( ")" )){
+                right=i;
+                break;
+            }else{
+                temp.add( x.get( i ));
+            }
+
+        }
+        if(isOperatorAndBracket( leftOfBracket)) {
+            x.set(left,calcInBracket( temp ));
+            right=(x.size()<right)?x.size()-1:right;
+            for(int i=right;i>left;i--){
+                x.remove( i );
+            }
+        }else {
+            if(left!=0){
+                x.set(left,"*");
+                x.set(left+1,calcInBracket(temp ));
+                right=(x.size()<right)?x.size()-1:right;
+                for(int i=right+1;i>left+1;i--){
+                    x.remove( i );
+                }
+            }else{
+                x.set(left,calcInBracket(temp ));
+                right=(x.size()<right)?x.size()-1:right;
+                for(int i=right;i>left;i--){
+                    x.remove( i );
+                }
+            }
+        }
+
+
+        return x;
+    }
+
+    private boolean isOperatorExcludesRightBracket(String str){
+        if(str.contains( "+" )||str.contains( "-" )||str.contains( "*" )||str.contains( "/" )||str.contains( "(" )){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    private boolean isOperatorAndBracket(String str){
+        if(str.contains( "+" )||str.contains( "-" )||str.contains( "*" )||str.contains( "/" )||str.contains( "(" )||str.contains( ")" )){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
     private String calcInBracket(ArrayList<String> x){
         if(x.contains( "/" ))x=eliminateDivision( x );
@@ -265,7 +337,7 @@ public class Calculator {
 
     private ArrayList<String> eliminateSubtraction(ArrayList<String> x){
         for(int i=0;i<x.size();i++){
-            if(x.get(i)=="-"){
+            if(x.get(i).contains( "-")){
 
                 if(i==0){
                     x.set( i,Float.toString( -Float.parseFloat( x.get( i+1 ))));
@@ -276,21 +348,17 @@ public class Calculator {
 
                 }else{
                     x.set( i-1,basicCalcString( x.get( i-1 ),"-",x.get( i+1 ) ));
-                    for(i=i;i<x.size()-1;i++) {
-                        x.set( i, x.get( i + 2 ) );
-                        try {
-                            x.remove( x.size() - 1 );
-                        } catch (Exception e) {
-                            e.getMessage();
-                        }
-                        try {
-                            x.remove( x.size()-2 );
-                        } catch (Exception e){
-                            e.getMessage();
-                        }
-
-                        if (i == x.size() - 2) i = 0;
+                    try {
+                        x.remove( i );
+                    } catch (Exception e) {
+                        e.getMessage();
                     }
+                    try {
+                        x.remove( i );
+                    } catch (Exception e){
+                        e.getMessage();
+                    }
+                    i=0;
                 }
 
 
@@ -302,15 +370,20 @@ public class Calculator {
 
     private ArrayList<String> eliminateMultiplication(ArrayList<String> x){
         for(int i=0;i<x.size();i++){
-            if(x.get(i)=="*"){
+            if(x.get(i).contains( "*")){
                 x.set( i,"*" );
                 x.set( i-1,basicCalcString( x.get( i-1 ),"*",x.get( i+1 ) ));
-                for(i=i;i<x.size()-1;i++){
-                    x.set( i,x.get( i+1 ));
-                    x.remove( x.size()-1 );
-                    x.remove( x.size()-2 );
-                    if(i==x.size()-2)i=0;
+                try {
+                    x.remove( i );
+                } catch (Exception e) {
+                    e.getMessage();
                 }
+                try {
+                    x.remove( i );
+                } catch (Exception e){
+                    e.getMessage();
+                }
+                i=0;
             }
 
         }
@@ -319,7 +392,7 @@ public class Calculator {
 
     private ArrayList<String> eliminateDivision(ArrayList<String> x){
         for(int i=0;i<x.size();i++){
-            if(x.get(i)=="/"){
+            if(x.get(i).contains( "/")){
                 x.set( i,"*" );
                 x.set( i+1,Float.toString( 1/Float.parseFloat(x.get( i+1 ) )) );
             }
