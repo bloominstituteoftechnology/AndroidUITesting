@@ -14,31 +14,29 @@ public class Calculator {
     ArrayList<String> alstrCalc;
     ArrayList<String> alstrOld;
 
-
     public Calculator(){
         strLog="";
         strNumber="";
         this.alstrCalc=new ArrayList<String>( 1 );
 
     }
+    public int size(){
+        return this.alstrCalc.size();
+    }
+    public int lastIndex(){
 
-    private boolean isAfterEqaual=false;
+        return (size()-1>0)?size()-1:0;
+    }
+
+    private boolean isAfterEqual=false;
 
 
     private void setOperator(char cOperator){
-        if(isAfterEqaual){
-            alstrCalc.set(alstrCalc.size()-1,  strNumber );
-        }else{
-            if(strNumber==""){
 
-            }else{
-                alstrCalc.add( strNumber );
-            }
-        }
         strNumber="";
         alstrCalc.add(Character.toString(   cOperator) );
         strLog+=cOperator;
-        isAfterEqaual=false;
+        isAfterEqual=false;
     }
 
 
@@ -68,7 +66,7 @@ public class Calculator {
                     alstrCalc= (ArrayList<String>) alstrOld.clone();
 
                 }else{
-                    alstrCalc.remove( alstrCalc.size()-1);
+                    alstrCalc.remove( lastIndex());
                 }
                 strLog+=chrX;
                 break;
@@ -123,41 +121,30 @@ public class Calculator {
                 alstrCalc.add( "Matrix" );
                 strLog+=chrX;
                 break;
-
+///////Clear/////////////////////////////////////////////////////////////////////
             case 'Z':
                 alstrOld= (ArrayList<String>) alstrCalc.clone();
                 alstrCalc.clear();
                 strLog="";
                 strNumber="";
-                isAfterEqaual=false;
+                isAfterEqual=false;
 
                 break;
+
+ //////Equal/////////////////////////////////////////////////////////////////////
             case '=':
+
+
+
                 if(isOperatorExcludesRightBracket( alstrCalc.get(alstrCalc.size()-1))){
-                    strResult="cannot end with operator";
+                    strResult="no operator at end";
                     break;
                 }
-                if(isAfterEqaual){
-                    alstrCalc.set(alstrCalc.size()-1, strNumber );
-                }else{
-                    if(strNumber==""){
 
-                    }else{
-                        alstrCalc.add( strNumber );
-                    }
-
-                }
-
-
-                if(alstrCalc.get( alstrCalc.size()-1 )=="+"){
-                    strResult="cannot end with operator";
-
-                    break;
-                }
                 strResult=calculate( alstrCalc);
-                isAfterEqaual=true;
+                isAfterEqual=true;
                 break;
-
+  /////numbers/////////////////////////////////////////////////////////////////////
             case 'A':
             case 'a':
                 alstrCalc.add( "0xa" );
@@ -201,8 +188,18 @@ public class Calculator {
             case '7':
             case '8':
             case '9':
-
                 strNumber+=chrX;
+                if(size()==0){
+                    alstrCalc.add( strNumber );
+                }else{
+
+                        if(!isAfterEqual&&isOperatorAndBracket( alstrCalc.get( lastIndex() ))) {
+                            alstrCalc.add( strNumber );
+                        }else{
+                            alstrCalc.set( lastIndex(),strNumber );
+
+                        }
+                }
                 strLog+=chrX;
                 break;
             default:
@@ -238,6 +235,7 @@ public class Calculator {
             temp= eliminateBracket(temp);
 
         } while (temp.contains( "(") );
+
         return calcInBracket( temp );
     }
 
@@ -262,7 +260,7 @@ public class Calculator {
 
         }
         if(isOperatorAndBracket( leftOfBracket)) {
-            x.set(left,calcInBracket( temp ));
+            x.set(left,calcInBracket( temp));
             right=(x.size()<right)?x.size()-1:right;
             for(int i=right;i>left;i--){
                 x.remove( i );
@@ -270,7 +268,7 @@ public class Calculator {
         }else {
             if(left!=0){
                 x.set(left,"*");
-                x.set(left+1,calcInBracket(temp ));
+                x.set(left+1,calcInBracket(temp));
                 right=(x.size()<right)?x.size()-1:right;
                 for(int i=right+1;i>left+1;i--){
                     x.remove( i );
@@ -304,13 +302,16 @@ public class Calculator {
     }
 
     private String calcInBracket(ArrayList<String> x){
-        if(x.contains( "/" ))x=eliminateDivision( x );
-        if(x.contains( "*" ))x=eliminateMultiplication(x);
-        if(x.contains( "-" ))x=eliminateSubtraction( x );
-        if(x.contains( "+" ))x=eliminateAddition( x );
+        for(int i=0;i<x.size();i++) {
+            if (x.contains( "/" )) x = eliminateDivision( x );
+            if (x.contains( "*" )) x = eliminateMultiplication( x );
+            if (x.contains( "%" )) x = eliminateModulo( x );
+            if (x.contains( "-" )) x = eliminateSubtraction( x );
+            if (x.contains( "+" )) x = eliminateAddition( x );
 
+        }
 
-        return x.get( 0);
+        return x.get( 0 );
     }
 
     private ArrayList<String> eliminateAddition(ArrayList<String> x){
@@ -367,6 +368,28 @@ public class Calculator {
         return x;
     }
 
+    private ArrayList<String> eliminateModulo(ArrayList<String> x){
+        for(int i=0;i<x.size();i++){
+            if(x.get(i).contains( "%")){
+                x.set( i,"%" );
+                x.set( i-1,basicCalcString( x.get( i-1 ),"%",x.get( i+1 ) ));
+                try {
+                    x.remove( i );
+                } catch (Exception e) {
+                    e.getMessage();
+                }
+                try {
+                    x.remove( i );
+                } catch (Exception e){
+                    e.getMessage();
+                }
+                i=0;
+            }
+
+        }
+        return x;
+    }
+
     private ArrayList<String> eliminateMultiplication(ArrayList<String> x){
         for(int i=0;i<x.size();i++){
             if(x.get(i).contains( "*")){
@@ -416,6 +439,9 @@ public class Calculator {
             case "/":
                 fResult=division( a,b );
                 break;
+            case "%":
+                fResult=modulo(  a,b );
+                break;
         }
 
 
@@ -435,6 +461,9 @@ public class Calculator {
     private float division(float a,float b){
         return a/b;
     }
+    private float modulo(float a,float b){
+        return a%b;
+    }
 
     public String add(String strX,String strY){
         fX=Float.parseFloat( strX);
@@ -446,6 +475,14 @@ public class Calculator {
 
     public String showLog(){
         return this.strLog;
+    }
+    public String showCalc(){
+        String str="";
+        for(int i=0;i<alstrCalc.size();i++){
+            str+=alstrCalc.get( i );
+        }
+
+        return str;
     }
     public String showResult(){
         return this.strResult;
