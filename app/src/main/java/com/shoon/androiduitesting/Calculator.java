@@ -41,6 +41,8 @@ public class Calculator {
         isAfterEqaual=false;
     }
 
+
+
     public void addSymbol(char chrX){
 
         switch (chrX){
@@ -152,7 +154,7 @@ public class Calculator {
 
                     break;
                 }
-                calculate( );
+                strResult=calculate( alstrCalc);
                 isAfterEqaual=true;
                 break;
 
@@ -217,7 +219,7 @@ public class Calculator {
                 strLog="";
                 break;
             case "=":
-                calculate( );
+                strResult=calculate( alstrCalc);
                 break;
 
 
@@ -228,18 +230,15 @@ public class Calculator {
 
     }
 
-    private void calculate(){
+    public String calculate(ArrayList<String> x){
 
-        ArrayList<String> temp= (ArrayList<String>) alstrCalc.clone();
+        ArrayList<String> temp= (ArrayList<String>) x.clone();
 
         do{
             temp= eliminateBracket(temp);
 
         } while (temp.contains( "(") );
-        strResult=calcInBracket( temp );
-
-
-
+        return calcInBracket( temp );
     }
 
     private ArrayList<String> eliminateBracket(ArrayList<String> x){
@@ -254,7 +253,7 @@ public class Calculator {
                     leftOfBracket=x.get( left-1 );
                 }
 
-            }else if(alstrCalc.get( i ).contains( ")" )){
+            }else if(x.get( i ).contains( ")" )){
                 right=i;
                 break;
             }else{
