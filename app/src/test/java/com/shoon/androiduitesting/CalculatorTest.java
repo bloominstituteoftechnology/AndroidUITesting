@@ -5,17 +5,18 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class CalculatorTest {
     ArrayList<String> als;
     Calculator calc;
     @Before
-    public  void initial(){
+    public void setUp() throws Exception {
         calc=new Calculator(  );
 
         als=new ArrayList<>(  );
     }
+
 
     @Test
     public void testOne() {
@@ -98,4 +99,18 @@ public class CalculatorTest {
         als.add("3");
         assertEquals( "3.3333335",calc.calculate(als  ));
     }
+
+    @Test
+    public void test2kakeBracket() {
+        als.add("2");
+        als.add("(");
+        als.add("3");
+        als.add("+");
+        als.add("4");
+        als.add(")");
+
+        assertEquals( "14.0",calc.calculate(als  ));
+    }
+
+
 }
