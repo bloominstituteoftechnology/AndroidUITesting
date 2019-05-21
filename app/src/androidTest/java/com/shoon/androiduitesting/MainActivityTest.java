@@ -15,24 +15,38 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
 public class MainActivityTest {
     @Rule
-    public ActivityTestRule<MainActivity> mainActivityTestRule = new ActivityTestRule<>(MainActivity.class, false, true);
+    public ActivityTestRule<MainActivity> mainActivityTestRule = new ActivityTestRule<>( MainActivity.class, false, true );
 
     @Before
     public void setUp() throws Exception {
-        Intents.init();
+
     }
 
     @Test
     public void onCreate() {
-       // Espresso.onView( (Matchers.allOf( ViewMatchers.withId( R.id.button0 ),ViewMatchers.isDisplayed() ))).perform( ViewActions.click() );
-        onView(withId(R.id.button1))
-                .perform(click());
-        onView(withId(R.id.buttonEqual))
-                .perform(click());
+        // Espresso.onView( (Matchers.allOf( ViewMatchers.withId( R.id.button0 ),ViewMatchers.isDisplayed() ))).perform( ViewActions.click() );
+        Intents.init();
+    }
 
-        onView(withId(R.id.textResult)).check(matches(ViewMatchers.withText("1")));
+    @Test
+    public void testInput0(){
+        onView( withId( R.id.button0 ) )
+                .perform( click() );
+        onView( withId( R.id.buttonEqual ) )
+                .perform( click() );
+        onView( withId( R.id.textResult ) ).check( matches( ViewMatchers.withText( "1" ) ) );
         Intents.release();
     }
 
+    @Test
+    public void testInput1(){
+        onView( withId( R.id.button1 ) )
+                .perform( click() );
+        onView( withId( R.id.buttonEqual ) )
+                .perform( click() );
 
+
+        onView( withId( R.id.textResult ) ).check( matches( ViewMatchers.withText( "1" ) ) );
+        Intents.release();
+    }
 }

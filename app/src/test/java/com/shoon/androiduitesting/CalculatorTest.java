@@ -97,7 +97,7 @@ public class CalculatorTest {
         als.add("10");
         als.add("/");
         als.add("3");
-        assertEquals( "3.3333335",calc.calculate(als  ));
+        assertEquals( "3.333333333333333",calc.calculate(als  ));
     }
 
     @Test
@@ -112,5 +112,39 @@ public class CalculatorTest {
         assertEquals( "14.0",calc.calculate(als  ));
     }
 
+    @Test
+    public void testMultipleNumbersNextEachOther() {
+        als.add("2");
+        als.add("3");
+        als.add("4");
 
+        assertEquals( "24.0",calc.calculate(als  ));
+    }
+
+    @Test
+    public void test2TimesBracket() {
+        als.add("2");
+        als.add("(");
+        als.add("4");
+        als.add("+");
+        als.add("3");
+        als.add(")");
+
+        assertEquals( "14.0",calc.calculate(als  ));
+    }
+
+    @Test
+    public void test2Pi() {
+        als.add("2");
+        als.add("π");
+        assertEquals( "6.283185307179586",calc.calculate(als  ));
+    }
+
+    @Test
+    public void testBPB() {
+        als.add("(");
+        als.add("+");
+        als.add(")");
+        assertEquals( "Invalid",calc.calculate(als  ));
+    }
 }

@@ -4,29 +4,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <!--Text line-->
-    <TextView
-        android:id="@+id/inputText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:text="Let's calculate!"
-        android:textSize="30dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginStart="4dp"/>
     <LinearLayout
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+        android:orientation="horizontal"
+        android:layout_gravity="right"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/inputText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:text="Let's calculate!"
+            android:textSize="30dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginStart="4dp"/>
+
+
+        <Button
+            android:text="No unit"
+            android:textAllCaps="false"
+            android:id="@+id/buttonUnitToConvert"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_gravity="fill_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <Button
             android:id="@+id/buttonEqual"
 
             style="@android:style/Widget.Material.Light.Button.Inset"
-            android:layout_width="176dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:text="=" />
+            android:text="="
+            android:textSize="30dp"/>
 
         <TextView
             android:id="@+id/textResult"
@@ -34,43 +53,34 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginEnd="4dp"
+            android:maxWidth="220dp"
             android:text="result!"
             android:textSize="30dp" />
+
+        <Button
+            android:text="No unit"
+            android:textAllCaps="false"
+            android:id="@+id/buttonUnitConverted"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
+
             <LinearLayout
                 android:layout_gravity="fill_horizontal"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
-                <Button
-                    android:id="@+id/buttonUndo"
-                    style="@android:style/Widget.Material.Light.Button.Inset"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp"
-                       android:text="←"
-                    android:textAllCaps="false" />
-
-                <Button
-                    android:text="CLR"
-                    android:textAllCaps="false"
-                    android:id="@+id/buttonClear"
-                    style="@android:style/Widget.Material.Light.Button.Inset"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp" />
-
                 <Button
                     android:text="("
                     android:textAllCaps="false"
@@ -78,6 +88,7 @@
                     style="@android:style/Widget.Material.Light.Button.Inset"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="30dp"
                     android:layout_marginStart="4dp"
                     android:layout_marginEnd="4dp"/>
 
@@ -87,8 +98,33 @@
                     style="@android:style/Widget.Material.Light.Button.Inset"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="30dp"
                     android:layout_marginStart="4dp"
                     android:layout_marginEnd="4dp" />
+
+
+
+                <Button
+                    android:text="C"
+                    android:textAllCaps="false"
+                    android:id="@+id/buttonClear"
+                    style="@android:style/Widget.Material.Light.Button.Inset"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="30dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp" />
+
+                <Button
+                    android:text="←"
+                    android:id="@+id/buttonUndo"
+                    style="@android:style/Widget.Material.Light.Button.Inset"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:textSize="30dp"
+                    android:textAllCaps="false" />
 
             </LinearLayout>
 
@@ -100,6 +136,7 @@
                     android:text="0"
                     android:id="@+id/button0"
                     style="@android:style/Widget.Material.Light.Button.Inset"
+                    android:textSize="30dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
@@ -110,6 +147,7 @@
                     android:text="."
                     android:textAllCaps="false"
                     android:id="@+id/buttonPeriod"
+                    android:textSize="30dp"
                     style="@android:style/Widget.Material.Light.Button.Inset"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -120,6 +158,7 @@
                     android:text="%"
                     android:textAllCaps="false"
                     android:id="@+id/buttonPercent"
+                    android:textSize="30dp"
                     style="@android:style/Widget.Material.Light.Button.Inset"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -129,6 +168,7 @@
                 <Button
                     android:text="+"
                     android:id="@+id/buttonPlus"
+                    android:textSize="30dp"
                     style="@android:style/Widget.Material.Light.Button.Inset"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -145,6 +185,7 @@
                 <Button
                     android:id="@+id/button1"
                     style="@android:style/Widget.Material.Light.Button.Inset"
+                    android:textSize="30dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
@@ -156,6 +197,7 @@
                     android:text="2"
                     android:textAllCaps="false"
                     android:id="@+id/button2"
+                    android:textSize="30dp"
                     style="@android:style/Widget.Material.Light.Button.Inset"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -165,6 +207,7 @@
                 <Button
                     android:text="3"
                     android:textAllCaps="false"
+                    android:textSize="30dp"
                     android:id="@+id/button3"
                     style="@android:style/Widget.Material.Light.Button.Inset"
                     android:layout_width="wrap_content"
@@ -175,6 +218,7 @@
                 <Button
                     android:text="-"
                     android:id="@+id/buttonMinus"
+                    android:textSize="30dp"
                     style="@android:style/Widget.Material.Light.Button.Inset"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -191,6 +235,7 @@
 
                 <Button
                     android:id="@+id/button4"
+                    android:textSize="30dp"
 
                     style="@android:style/Widget.Material.Light.Button.Inset"
                     android:layout_width="wrap_content"
@@ -203,6 +248,7 @@
                 <Button
                     android:text="5"
                     android:textAllCaps="false"
+                    android:textSize="30dp"
                     android:id="@+id/button5"
                     style="@android:style/Widget.Material.Light.Button.Inset"
                     android:layout_width="wrap_content"
@@ -212,6 +258,7 @@
 
                 <Button
                     android:text="6"
+                    android:textSize="30dp"
                     android:textAllCaps="false"
                     android:id="@+id/button6"
                     style="@android:style/Widget.Material.Light.Button.Inset"
@@ -221,8 +268,9 @@
                     android:layout_marginEnd="4dp"/>
 
                 <Button
-                    android:text="x"
+                    android:text="×"
                     android:id="@+id/buttonMultiply"
+                    android:textSize="30dp"
                     style="@android:style/Widget.Material.Light.Button.Inset"
                     android:textAllCaps="false"
                     android:layout_width="wrap_content"
@@ -244,6 +292,7 @@
                     android:id="@+id/button7"
                     style="@android:style/Widget.Material.Light.Button.Inset"
                     android:layout_width="wrap_content"
+                    android:textSize="30dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:layout_marginEnd="4dp"
@@ -254,6 +303,7 @@
                     android:text="8"
                     android:textAllCaps="false"
                     android:id="@+id/button8"
+                    android:textSize="30dp"
                     style="@android:style/Widget.Material.Light.Button.Inset"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -263,6 +313,7 @@
                 <Button
                     android:text="9"
                     android:textAllCaps="false"
+                    android:textSize="30dp"
                     android:id="@+id/button9"
                     style="@android:style/Widget.Material.Light.Button.Inset"
                     android:layout_width="wrap_content"
@@ -274,6 +325,7 @@
                     android:text="/"
                     android:id="@+id/buttonDevide"
                     style="@android:style/Widget.Material.Light.Button.Inset"
+                    android:textSize="30dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
@@ -281,82 +333,363 @@
 
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/llConverter"
                 android:layout_gravity="fill_horizontal"
-                android:orientation="horizontal"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_gravity="fill_horizontal"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:text="kg"
+                        android:textAllCaps="false"
+                        android:id="@+id/buttonKg"
+                        style="@android:style/Widget.Material.Light.Button.Inset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp" />
+
+
+                    <Button
+                        android:text="gram"
+                        android:id="@+id/buttonGram"
+                        style="@android:style/Widget.Material.Light.Button.Inset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:textAllCaps="false" />
+                    <Button
+                        android:text="lb"
+                        android:textAllCaps="false"
+                        android:id="@+id/buttonPound"
+                        style="@android:style/Widget.Material.Light.Button.Inset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"/>
+
+                    <Button
+                        android:text="oz"
+                        android:id="@+id/buttonOunces"
+                        style="@android:style/Widget.Material.Light.Button.Inset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp" />
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_gravity="fill_horizontal"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:text="mm"
+                        android:textAllCaps="false"
+                        android:id="@+id/buttonMM"
+                        style="@android:style/Widget.Material.Light.Button.Inset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp" />
+                    <Button
+                        android:text="cm"
+                        android:textAllCaps="false"
+                        android:id="@+id/buttonCM"
+                        style="@android:style/Widget.Material.Light.Button.Inset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"/>
+
+                    <Button
+                        android:text="m"
+                        android:textAllCaps="false"
+                        android:id="@+id/buttonM"
+                        style="@android:style/Widget.Material.Light.Button.Inset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp" />
+
+
+                    <Button
+                        android:text="km"
+                        android:id="@+id/buttonKM"
+                        style="@android:style/Widget.Material.Light.Button.Inset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:textAllCaps="false" />
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_gravity="fill_horizontal"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:text="inch"
+                        android:textAllCaps="false"
+                        android:id="@+id/buttonInch"
+                        style="@android:style/Widget.Material.Light.Button.Inset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp" />
+                    <Button
+                        android:text="feet"
+                        android:textAllCaps="false"
+                        android:id="@+id/buttonFeet"
+                        style="@android:style/Widget.Material.Light.Button.Inset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp" />
+
+                    <Button
+                        android:text="yard"
+                        android:id="@+id/buttonYard"
+                        style="@android:style/Widget.Material.Light.Button.Inset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:textAllCaps="false" />
+                    <Button
+                        android:text="mile"
+                        android:textAllCaps="false"
+                        android:id="@+id/buttonMile"
+                        style="@android:style/Widget.Material.Light.Button.Inset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"/>
+
+
+
+
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_gravity="fill_horizontal"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:text="m²"
+                        android:textAllCaps="false"
+                        android:id="@+id/buttonSquareMeter"
+                        style="@android:style/Widget.Material.Light.Button.Inset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp" />
+
+                    <Button
+                        android:text="ft²"
+                        android:id="@+id/buttonSquareFeet"
+                        style="@android:style/Widget.Material.Light.Button.Inset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:textAllCaps="false" />
+                    <Button
+                        android:text="acre"
+                        android:textAllCaps="false"
+                        android:id="@+id/buttonAcre"
+                        style="@android:style/Widget.Material.Light.Button.Inset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"/>
+
+
+                    <Button
+                        android:text="°F"
+                        android:textAllCaps="false"
+                        android:id="@+id/buttonFarenheit"
+                        style="@android:style/Widget.Material.Light.Button.Inset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_gravity="fill_horizontal"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:text="畳"
+                        android:textAllCaps="false"
+                        android:id="@+id/buttonJou"
+                        style="@android:style/Widget.Material.Light.Button.Inset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp" />
+
+                    <Button
+                        android:text="坪"
+                        android:id="@+id/buttonTsubo"
+                        style="@android:style/Widget.Material.Light.Button.Inset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:textAllCaps="false" />
+                    <Button
+                        android:text="年号"
+                        android:textAllCaps="false"
+                        android:id="@+id/buttonNengo"
+                        style="@android:style/Widget.Material.Light.Button.Inset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"/>
+                    <Button
+                        android:text="°C"
+                        android:id="@+id/buttonCentigrade"
+                        style="@android:style/Widget.Material.Light.Button.Inset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/llHexDecimal"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <Button
-                    android:id="@+id/buttonA"
-                    style="@android:style/Widget.Material.Light.Button.Inset"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp"
-                    android:text="a"
-                    android:textAllCaps="false" />
 
-                <Button
-                    android:text="b"
-                    android:textAllCaps="false"
-                    android:id="@+id/buttonB"
-                    style="@android:style/Widget.Material.Light.Button.Inset"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp"/>
+                <LinearLayout
+                    android:layout_gravity="fill_horizontal"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <Button
-                    android:id="@+id/buttonC"
-                    style="@android:style/Widget.Material.Light.Button.Inset"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp"
-                    android:text="c"
-                    android:textAllCaps="false" />
+                    <Button
+                        android:id="@+id/buttonA"
+                        style="@android:style/Widget.Material.Light.Button.Inset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:text="a"
+                        android:textAllCaps="false" />
 
-                <Button
-                    android:text="d"
-                    android:textAllCaps="false"
-                    android:id="@+id/buttonD"
-                    style="@android:style/Widget.Material.Light.Button.Inset"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp" />
+                    <Button
+                        android:text="b"
+                        android:textAllCaps="false"
+                        android:id="@+id/buttonB"
+                        style="@android:style/Widget.Material.Light.Button.Inset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"/>
+
+                    <Button
+                        android:id="@+id/buttonC"
+                        style="@android:style/Widget.Material.Light.Button.Inset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:text="c"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:text="d"
+                        android:textAllCaps="false"
+                        android:id="@+id/buttonD"
+                        style="@android:style/Widget.Material.Light.Button.Inset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_gravity="fill"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/buttonE"
+                        style="@android:style/Widget.Material.Light.Button.Inset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:text="e"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:text="f"
+                        android:textAllCaps="false"
+                        android:id="@+id/buttonF"
+                        style="@android:style/Widget.Material.Light.Button.Inset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp" />
+
+                    <Button
+                        android:text="to Dec"
+                        android:id="@+id/buttonHexToDecimal"
+                        style="@android:style/Widget.Material.Light.Button.Inset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"/>
+
+                    <Button
+                        android:text="Dec"
+                        android:id="@+id/buttonModeHexToDecimal"
+                        style="@android:style/Widget.Material.Light.Button.Inset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp" />
+
+                </LinearLayout>
+
 
             </LinearLayout>
-
             <LinearLayout
+                android:id="@+id/llToHexDecimal"
                 android:layout_gravity="fill"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <Button
-                    android:id="@+id/buttonE"
-                    style="@android:style/Widget.Material.Light.Button.Inset"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp"
-                    android:text="e"
-                    android:textAllCaps="false" />
 
                 <Button
-                    android:text="f"
+                    android:text="Conversion"
                     android:textAllCaps="false"
-                    android:id="@+id/buttonF"
-                    style="@android:style/Widget.Material.Light.Button.Inset"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp" />
-
-                <Button
-                    android:text="to dec"
-                    android:id="@+id/buttonToDecimal"
+                    android:id="@+id/buttonConversion"
                     style="@android:style/Widget.Material.Light.Button.Inset"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -364,8 +697,28 @@
                     android:layout_marginEnd="4dp"/>
 
                 <Button
-                    android:text="to hex"
-                    android:id="@+id/buttonToHex"
+                    android:text="to HexDec"
+                    android:textAllCaps="false"
+                    android:id="@+id/buttonToDecimalToHex"
+                    style="@android:style/Widget.Material.Light.Button.Inset"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"/>
+
+                <Button
+                    android:text="HexDec"
+                    android:textAllCaps="false"
+                    android:id="@+id/buttonModeDecimalToHex"
+                    style="@android:style/Widget.Material.Light.Button.Inset"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp" />
+                <Button
+                    android:text="Currency"
+                    android:textAllCaps="false"
+                    android:id="@+id/buttonCurrency"
                     style="@android:style/Widget.Material.Light.Button.Inset"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -373,9 +726,6 @@
                     android:layout_marginEnd="4dp" />
 
             </LinearLayout>
-
-
-
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -388,7 +738,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:layout_marginEnd="4dp"
-                    android:text="^2"
+                    android:text="²"
                     android:textAllCaps="false" />
 
                 <Button
@@ -404,7 +754,7 @@
                 <Button
                     android:text="π"
                     android:textAllCaps="false"
-                    android:id="@+id/buttonPie"
+                    android:id="@+id/buttonPi"
                     style="@android:style/Widget.Material.Light.Button.Inset"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -458,6 +808,7 @@
 
                 <Button
                     android:text="θ"
+                    android:textAllCaps="false"
                     android:id="@+id/buttonTheta"
                     style="@android:style/Widget.Material.Light.Button.Inset"
                     android:layout_width="wrap_content"
@@ -504,7 +855,7 @@
                     android:layout_marginEnd="4dp"/>
 
                 <Button
-                    android:text="()"
+                    android:text="[::]"
                     android:id="@+id/buttonMatrix"
                     style="@android:style/Widget.Material.Light.Button.Inset"
                     android:layout_width="wrap_content"
@@ -513,6 +864,7 @@
                     android:layout_marginEnd="4dp" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_gravity="fill"
                 android:orientation="horizontal"
@@ -520,65 +872,17 @@
                 android:layout_height="wrap_content">
 
                 <Button
-                    android:id="@+id/buttonAequals"
-                    style="@android:style/Widget.Material.Light.Button.Inset"
-                    
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp"
-                    android:text="a="
-                    android:textAllCaps="false" />
-
-                <Button
-                    android:text="b="
-                    android:textAllCaps="false"
-                    android:id="@+id/buttonBequals"
-                    style="@android:style/Widget.Material.Light.Button.Inset"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp" />
-
-                <Button
-                    android:text="c="
-                    android:textAllCaps="false"
-                    android:id="@+id/buttonCequals"
-                    style="@android:style/Widget.Material.Light.Button.Inset"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp"/>
-
-                <Button
-                    android:text="θ="
-                    android:id="@+id/buttonThetaequals"
-                    style="@android:style/Widget.Material.Light.Button.Inset"
-                    android:textAllCaps="false"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_gravity="fill"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <Button
+                    android:text="ax+by=c"
                     android:id="@+id/buttonAXBY"
                     style="@android:style/Widget.Material.Light.Button.Inset"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:layout_marginEnd="4dp"
-                    android:text="ax"
                     android:textAllCaps="false" />
 
                 <Button
-                    android:text="X2"
+                    android:text="aX²+bx+c=0"
                     android:id="@+id/buttonXSquare"
                     android:textAllCaps="false"
                     style="@android:style/Widget.Material.Light.Button.Inset"
@@ -589,7 +893,8 @@
                     android:layout_marginEnd="4dp" />
 
                 <Button
-                    android:text="○"
+                    android:text="Rotate"
+                    style="@android:style/Widget.Material.Light.Button.Inset"
                     android:textAllCaps="false"
                     android:id="@+id/buttonRotation"
                     android:layout_width="wrap_content"
